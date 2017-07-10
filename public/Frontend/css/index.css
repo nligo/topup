@@ -1,0 +1,34 @@
+.ct-box{padding: 65px 30px 60px;}
+	.rz-box{width: 550px;height: 40px;background-color: #e8f6f5;border: 1px solid #4fc3ba;border-radius: 4px;margin-bottom: 20px;}
+		.rz-box em{float: left;width: 130px;height: 39px;line-height: 39px;text-align: center;color: #616161;border-right: 1px solid #4fc3ba;}
+		.rz-box input{border: 0px;width: 410px;height: 39px;background: transparent;float: left;padding-left: 5px;}
+	.seaf{padding: 15px 0px 15px;border-bottom: 1px solid #e8e8e8;}
+		.seaf em{float: left;color: #666;width: 85px;}
+		.seaf-jd{width: 180px;float: left;background-color: #ADADAD;height: 10px;margin-top: 6px;}
+			.seaf-jd span{width: 33.3%;float: left;height: 10px;border-right: 10px solid #f9f9f9;}
+			.se-red{background-color: #d44950;}
+			.se-yellow{background-color: #ff8e32;}
+			.se-green{background-color: #5cb85c;}
+		.se-word{margin-left: -2px;background-color: #f9f9f9;color: #666;}
+	.se-list li{padding: 25px 0px 25px;border-bottom: 1px dashed #d0d0d0;}
+		.se-list-left{width: 650px;}
+			.icon-mb{background-position: -1px -25px;width: 29px;height: 37px;float: left;}
+			.icon-email{background-position: -43px -25px;width: 32px;height: 21px;float: left;margin-top: 8px;}
+			.icon-tel{background-position: -86px -25px;width: 29px;height: 33px;float: left;margin-top: 2px;}
+			.icon-mb2{background-position: -115px -25px;width: 32px;height: 23px;float: left;margin-top: 6px;}
+			.mb-word{width: 450px;float: left;margin-left: 15px;}
+				.mb-word em{color: #333;margin-right: 10px;font-size: 14px;}
+				.mb-word a{color: #ff5d32;}
+				.mb-word a:hover{text-decoration: none;color: #4fc3ba;}
+				.mb-word span{color: #b4b6ba;}
+			.btn-sz{width: 135px;height: 35px;color: #fff; background-color: #4fc3ba;text-align: center;line-height: 35px;border-radius: 4px;margin-top: 5px;}
+			.btn-sz:hover{text-decoration: none;background-color: #47afa7;color: #fff;}
+/*弹窗*/
+.jd-gray{background-position: 0 -196px;width: 170px;height: 31px;color: #454444;line-height: 31px;text-align: center;float: left;}
+.jd-green{background-position:  0 -156px;color: #fff;}
+	.ml140{margin-left: 120px;}
+	.ml50{margin-left: 25px;}
+.mtpis{width: 450px;margin: 15px auto 0px;border-radius: 4px;color: #4fc3ba; border: 1px solid #4fc3ba;background-color: #eafaf8;text-align: center;height: 30px;line-height: 30px;}
+.msuccess{background-position: -79px -82px;width: 56px;height: 56px;margin: 0 auto 20px;}	
+.btn-yz{width: 100px;height: 36px;background-color: #fff;color: #555;border: 1px solid #aaa;display: block;text-align: center;line-height: 34px;border-radius: 4px;}
+.btn-yz:hover{text-decoration: none;color: #4FC3BA;}

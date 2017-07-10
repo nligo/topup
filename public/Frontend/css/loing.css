@@ -1,0 +1,14 @@
+/*注册*/
+.pd{padding: 65px 0px;}
+.re-box{width: 820px;background-color: #fff; margin: 0px auto 0px;padding-bottom: 30px; min-height: 605px;border: 1px solid #4FC3BA;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;}
+	.re-title{width: 820px;margin: 0px auto 0px;height:55px;background-color: #4FC3BA;
+			 border-top-left-radius: 5px;border-top-right-radius: 5px;line-height: 55px;text-align: center;color: #fff;font-size: 20px;}
+	.progress{background-color: #ADADAD !important;margin-bottom: 0px !important;}
+	.progress span{width: 33.3%;height:20px; float: left;text-align: center;border-right: 1px solid #fff;color: #fff;}
+	.pr-red{background-color: #d44950;}
+/*登录*/	
+.dl-cyan{background-color: #67d1c9;padding-bottom: 80px;}
+	.loing{width: 380px;border: 10px solid #e4f2f1;background-color: #FFFFFF;margin-top: 90px;padding: 10px 0px;}
+	.dl-tx{background-position: 0 -82px;width: 72px;height: 72px;margin: 15px auto;}
+	.yzm{border: 1px solid #4fc3ba !important;border-top-left-radius: 4px;border-bottom-left-radius: 4px;
+	display: block;width: 111px;height: 38px;}
