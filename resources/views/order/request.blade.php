@@ -10,6 +10,9 @@
     <title> 充值 | 游狗通行证</title>
     <link rel="stylesheet" href="{{asset('Frontend')}}/Bootstrap/css/bootstrap.css" />
     <link href="{{asset('Frontend')}}/css/base.css" rel="stylesheet">
+
+    <link href="{{asset('Frontend')}}/molin/css/main.css" rel="stylesheet">
+    <link href="{{asset('Frontend')}}/molin/css/mlyx.css" rel="stylesheet">
     <link href="{{asset('Frontend')}}/css/loing.css" rel="stylesheet">
 
     <!--表单验证-->
@@ -76,7 +79,7 @@
                             <div class="col-lg-5 col-sm-6">
                                 <select class="form-control" name="topupAmount" id="topupAmount" required>
                                     <option value="">请选择充值金额</option>
-                                    <option value="0.1">0.1</option>
+                                    <option value="0.01">0.01</option>
                                     <option value="10">10</option>
                                     <option value="30">30</option>
                                     <option value="50">50</option>

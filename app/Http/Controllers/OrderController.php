@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Service\AlipayOrders;
 use App\Service\Orders;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
@@ -111,17 +113,16 @@ class OrderController extends Controller
             case 'TRADE_FINISHED':
                 // TODO: 支付成功，取得订单号进行其它相关操作。
                 $result = (array)$request->query->getIterator();
-                $orderSn = Input::get('out_trade_no');
-                $orderInfo = Orders::where('order_sn',$orderSn)->get();
-                if(!empty($orderInfo[0]))
+
+                $alipayOrder = new AlipayOrders();
+                $response = $alipayOrder->createAlipayOrder($result);
+                if($response['status'])
                 {
-                    $orderInfo[0]->order_status = Orders::STATUS_PAID;
-                    $orderInfo[0]->save();
+                    return view('order.success');
                 }
                 break;
-
         }
 
-        return view('alipay.success');
+        return view('order.success');
     }
 }

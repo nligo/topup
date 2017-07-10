@@ -6,7 +6,7 @@ use App\Models\AlipayOrder;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
 use App\Service\OrdersLog;
-class Orders
+class Orders extends Base
 {
     public function createOrder(array $data)
     {
@@ -57,14 +57,5 @@ class Orders
         if (false !== strpos($ip, ','))
             $ip = reset(explode(',', $ip));
         return $ip;
-    }
-
-    protected function response($status = false,$msg = "提示信息",$data = [])
-    {
-        return [
-            'status' => $status,
-            'msg' => $msg,
-            'data' => $data
-        ];
     }
 }
