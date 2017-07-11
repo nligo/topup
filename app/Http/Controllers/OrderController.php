@@ -84,7 +84,10 @@ class OrderController extends Controller
         // 判断通知类型。
         switch (Input::get('trade_status')) {
             case 'TRADE_SUCCESS':
+                Log::debug('gaofei!!!!!!!!!!!!!!!!!!!!!!!!!');
+
             case 'TRADE_FINISHED':
+                Log::debug('weeeeee!!!!!!!!!!!!!!!!!!!!!!!!!');
                 // TODO: 支付成功，取得订单号进行其它相关操作。
                 $result = (array)$request->request->getIterator();
                 Log::debug(json_encode($result));
