@@ -61,6 +61,7 @@ class OrderController extends Controller
         return redirect('order/request');
     }
 
+
     public function pay($orderId,Request $request)
     {
         $order = \App\Models\Orders::find($orderId);
@@ -87,11 +88,19 @@ class OrderController extends Controller
                 // TODO: 支付成功，取得订单号进行其它相关操作。
                 $result = (array)$request->request->getIterator();
                 Log::debug(json_encode($result));
+
+
+                $alipayOrder = new AlipayOrders();
+                $response = $alipayOrder->createAlipayOrder($result);
+                if($response['status'])
+                {
+                    return "success";
+                }
                 break;
 
         }
 
-        return "success";
+        return "failed";
 
     }
 
@@ -112,14 +121,14 @@ class OrderController extends Controller
             case 'TRADE_SUCCESS':
             case 'TRADE_FINISHED':
                 // TODO: 支付成功，取得订单号进行其它相关操作。
-                $result = (array)$request->query->getIterator();
-
-                $alipayOrder = new AlipayOrders();
-                $response = $alipayOrder->createAlipayOrder($result);
-                if($response['status'])
-                {
-                    return view('order.success');
-                }
+//                $result = (array)$request->query->getIterator();
+//
+//                $alipayOrder = new AlipayOrders();
+//                $response = $alipayOrder->createAlipayOrder($result);
+//                if($response['status'])
+//                {
+//                    return view('order.success');
+//                }
                 break;
         }
 
