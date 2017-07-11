@@ -85,7 +85,16 @@ class OrderController extends Controller
         switch (Input::get('trade_status')) {
             case 'TRADE_SUCCESS':
                 Log::debug('gaofei!!!!!!!!!!!!!!!!!!!!!!!!!');
+                $result = (array)$request->request->getIterator();
+                Log::debug(json_encode($result));
 
+
+                $alipayOrder = new AlipayOrders();
+                $response = $alipayOrder->createAlipayOrder($result);
+                if($response['status'])
+                {
+                    return "success";
+                }
             case 'TRADE_FINISHED':
                 Log::debug('weeeeee!!!!!!!!!!!!!!!!!!!!!!!!!');
                 // TODO: 支付成功，取得订单号进行其它相关操作。
@@ -126,12 +135,12 @@ class OrderController extends Controller
                 // TODO: 支付成功，取得订单号进行其它相关操作。
 //                $result = (array)$request->query->getIterator();
 //
-//                $alipayOrder = new AlipayOrders();
-//                $response = $alipayOrder->createAlipayOrder($result);
-//                if($response['status'])
-//                {
-//                    return view('order.success');
-//                }
+                $alipayOrder = new AlipayOrders();
+                $response = $alipayOrder->createAlipayOrder($result);
+                if($response['status'])
+                {
+                    return view('order.success');
+                }
                 break;
         }
 
