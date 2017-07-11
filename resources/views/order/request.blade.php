@@ -11,12 +11,8 @@
     <link rel="stylesheet" href="{{asset('Frontend')}}/Bootstrap/css/bootstrap.css" />
     <link href="{{asset('Frontend')}}/css/base.css" rel="stylesheet">
 
-    <link href="{{asset('Frontend')}}/molin/css/main.css" rel="stylesheet">
-    <link href="{{asset('Frontend')}}/molin/css/mlyx.css" rel="stylesheet">
     <link href="{{asset('Frontend')}}/css/loing.css" rel="stylesheet">
 
-    <!--表单验证-->
-    <link rel="stylesheet" href="{{asset('Frontend')}}/Bootstrap/css/bootstrapValidator.css" />
     <!--图标-->
     <link rel="stylesheet" href="{{asset('Frontend')}}/css/font-awesome.min.css" />
     <link rel="stylesheet" href="{{asset('Frontend')}}/css/font-awesome-ie7.min.css" />
@@ -62,8 +58,7 @@
                             <div class="col-lg-5 col-sm-6">
                                 <input type="text" id="account" name="account" class="form-control"
                                        required
-                                       datatype="/^[a-zA-z]\w{3,15}$/" errormsg="请输入合法账号" nullmsg="游戏账号"/>
-                                <!--添加pr-red样式进度条变红-->
+                                       datatype="/^[a-zA-z]\w{3,15}$/" errormsg="请输入合法账号" ajaxurl="{{ route("user_checkuser") }}" nullmsg="游戏账号"/>
                             </div>
                         </div>
                         <div class="form-group">
@@ -118,13 +113,6 @@
                         <button type="submit" class="btn-cyan mbtn-lg mt20 mauto" name="btn" id="test_but">确认充值</button>
                     </form>
                 </div>
-                @if($errors->any())
-                    <ul class="alert alert-danger">
-                        @foreach($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                @endif
             </div>
         </div>
     </div>
@@ -205,45 +193,5 @@
         </div>
     </div>
 </div>
-
-<script type="text/javascript" src="{{asset('Frontend')}}/js/jquery-1.10.1.min.js"></script>
-<script type="text/javascript " src="{{asset('Frontend')}}/Bootstrap/js/bootstrap.js"></script>
-<!--支持ie8-->
-<script type="text/javascript" src="{{asset('Frontend')}}/js/html5shiv.js" ></script>
-<script type="text/javascript" src="{{asset('Frontend')}}/js/respond.js" ></script>
-<!--表单验证-->
-<script type="text/javascript" src="{{asset('Frontend')}}/Bootstrap/js/bootstrapValidator-0.5.0.min.js"></script>
-<!--日期-->
-<script type="text/javascript" src="{{asset('Frontend')}}/Bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
-<!--本页面js-->
-<script type="text/javascript" src="{{asset('Frontend')}}/js/publicFun.js"></script>
-
-<script type="text/javascript" src="{{asset('Frontend')}}/js/layer/layer.js" ></script>
-<script>
-    function alertFun() {
-        //询问框
-        layer.confirm('此功能暂未开启!', {
-            btn: ['关闭'] //按钮
-        })
-    }
-
-    function SetHome(obj,vrl){
-        try{
-            obj.style.behavior='url(#default#homepage)';obj.setHomePage(vrl);
-        }
-        catch(e){
-            if(window.netscape) {
-                try {
-                    netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");
-                }
-                catch (e) {
-                    alert("此操作被浏览器拒绝！\n请在浏览器地址栏输入“about:config”并回车\n然后将 [signed.applets.codebase_principal_support]的值设置为'true',双击即可。");
-                }
-                var prefs = Components.classes['@mozilla.org/preferences-service;1'].getService(Components.interfaces.nsIPrefBranch);
-                prefs.setCharPref('browser.startup.homepage',vrl);
-            }
-        }
-    }
-</script>
 </body>
 </html>

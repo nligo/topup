@@ -14,6 +14,7 @@ class OrderController extends Controller
 {
     public function request()
     {
+        $order = new Orders();
         Session::put('form_token',time());
         return view('order.request');
     }

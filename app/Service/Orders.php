@@ -23,9 +23,9 @@ class Orders extends Base
             }
             $order->order_status = Order::STATUS_INIT;
             $order->save();
+            $log = new Logs();
+            $log->writeOrderLog(Order::STATUS_INIT,'下单成功',$order->id);
             DB::commit();
-            $orderLogs = new OrdersLog();
-            $logs = $orderLogs->writeLog(Order::STATUS_INIT,'下单成功',$order->id);
             return $this->response(true,'操作成功',$order);
         }
         catch (\Exception $e)
@@ -36,6 +36,15 @@ class Orders extends Base
         }
 
     }
+
+
+    public function findOrderByStatus($status = Order::STATUS_INIT)
+    {
+        $orderList = Order::where("order_status",$status)->get();
+        dump($orderList);exit;
+        return $orderList;
+    }
+
 
     protected function generateOrderSn()
     {

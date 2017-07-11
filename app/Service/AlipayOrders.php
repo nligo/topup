@@ -31,9 +31,8 @@ class AlipayOrders extends Base
             $alipayOrder->order_id = $order->id;
             $alipayOrder->save();
             DB::commit();
-            $orderLogs = new OrdersLog();
-            $orderLogs->writeLog(Order::STATUS_PAID, '支付成功', $order->id);
-
+            $logs = new Logs();
+            $logs->writeOrderLog(Order::STATUS_PAID, '支付成功', $order->id);
             return $this->response(true, '操作成功', $alipayOrder);
         } catch (\Exception $e) {
             Log::debug($e->getMessage());
