@@ -75,42 +75,42 @@ class OrderController extends Controller
 
     public function notify(Request $request)
     {
-        // 验证请求。
-        if (! app('alipay.web')->verify()) {
-            Log::notice('Alipay return query data verification fail.');
-            return view('alipay.fail');
-        }
-
-        // 判断通知类型。
-        switch (Input::get('trade_status')) {
-            case 'TRADE_SUCCESS':
-                Log::debug('gaofei!!!!!!!!!!!!!!!!!!!!!!!!!');
-                $result = (array)$request->request->getIterator();
-                Log::debug(json_encode($result));
-
-
-                $alipayOrder = new AlipayOrders();
-                $response = $alipayOrder->createAlipayOrder($result);
-                if($response['status'])
-                {
-                    return "success";
-                }
-            case 'TRADE_FINISHED':
-                Log::debug('weeeeee!!!!!!!!!!!!!!!!!!!!!!!!!');
-                // TODO: 支付成功，取得订单号进行其它相关操作。
-                $result = (array)$request->request->getIterator();
-                Log::debug(json_encode($result));
-
-
-                $alipayOrder = new AlipayOrders();
-                $response = $alipayOrder->createAlipayOrder($result);
-                if($response['status'])
-                {
-                    return "success";
-                }
-                break;
-
-        }
+//        // 验证请求。
+//        if (! app('alipay.web')->verify()) {
+//            Log::notice('Alipay return query data verification fail.');
+//            return view('alipay.fail');
+//        }
+//
+//        // 判断通知类型。
+//        switch (Input::get('trade_status')) {
+//            case 'TRADE_SUCCESS':
+//                Log::debug('gaofei!!!!!!!!!!!!!!!!!!!!!!!!!');
+//                $result = (array)$request->request->getIterator();
+//                Log::debug(json_encode($result));
+//
+//
+//                $alipayOrder = new AlipayOrders();
+//                $response = $alipayOrder->createAlipayOrder($result);
+//                if($response['status'])
+//                {
+//                    return "success";
+//                }
+//            case 'TRADE_FINISHED':
+//                Log::debug('weeeeee!!!!!!!!!!!!!!!!!!!!!!!!!');
+//                // TODO: 支付成功，取得订单号进行其它相关操作。
+//                $result = (array)$request->request->getIterator();
+//                Log::debug(json_encode($result));
+//
+//
+//                $alipayOrder = new AlipayOrders();
+//                $response = $alipayOrder->createAlipayOrder($result);
+//                if($response['status'])
+//                {
+//                    return "success";
+//                }
+//                break;
+//
+//        }
 
         return "failed";
 
@@ -133,8 +133,7 @@ class OrderController extends Controller
             case 'TRADE_SUCCESS':
             case 'TRADE_FINISHED':
                 // TODO: 支付成功，取得订单号进行其它相关操作。
-//                $result = (array)$request->query->getIterator();
-//
+                $result = (array)$request->query->getIterator();
                 $alipayOrder = new AlipayOrders();
                 $response = $alipayOrder->createAlipayOrder($result);
                 if($response['status'])
