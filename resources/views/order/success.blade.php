@@ -88,7 +88,7 @@
         }
     }
 
-    countDown(30000,'{{ route('order_request') }}');
+    countDown(3,'{{ route('order_request') }}');
 
 </script>
 </body>
