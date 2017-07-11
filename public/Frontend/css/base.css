@@ -179,8 +179,8 @@ small{font-size: 100% !important;}
 				.head-portrait img{display: block;width: 130px;height: 130px;margin: 0 auto 20px;border-radius: 500px;border: 3px solid #fff;}
 				.head-portrait p{text-align: center;font-size: 14px;color: #393939;}
 				.subNav{width:100%;height:70px;display:block;color:#777;font-size:14px;line-height:70px; border-bottom:1px solid #dbdbdb;}
-		        .subNav:hover,.on-subNav{background-color:#4fc3ba !important;color:#fff !important;text-decoration:none;}   
-		            .nav-ic1,.nav-ic2,.nav-ic3,.nav-ic4{float:left;margin-left:70px;margin-right:10px;margin-top:28px;}    
+		        .subNav:hover,.on-subNav{background-color:#4fc3ba !important;color:#fff !important;text-decoration:none;}
+		            .nav-ic1,.nav-ic2,.nav-ic3,.nav-ic4{float:left;margin-left:70px;margin-right:10px;margin-top:28px;}
 		            .nav-ic1{background-position:-91px -1px;width: 11px;height: 13px;}
 		            .nav-ic2{background-position:-91px -1px;width: 11px;height: 13px;}
 		            .nav-ic3{background-position:-91px -1px;width: 11px;height: 13px;}
@@ -189,7 +189,7 @@ small{font-size: 100% !important;}
 		            .subNav:hover .nav-ic2,.on-subNav .nav-ic2{background-position: -105px -1px;}
 		            .subNav:hover .nav-ic3,.on-subNav .nav-ic3{background-position: -105px -1px;}
 		            .subNav:hover .nav-ic4,.on-subNav .nav-ic4{background-position: -105px -1px;}
-		            .subNav:hover .jt-right,.on-subNav .jt-right{background-position: -151px -2px;} 
+		            .subNav:hover .jt-right,.on-subNav .jt-right{background-position: -151px -2px;}
 		            .jt-right{background-position: -140px -2px;width: 8px;height: 7px;float: right;margin-right: 20px;margin-top: 34px;}
 		                .navContent a{padding-left:55px;font-size:14px;color:#777;height:32px;line-height:32px;display:block}
 		                .navContent a:hover,.on-sun{color:#4fc3ba !important;text-decoration:none;}

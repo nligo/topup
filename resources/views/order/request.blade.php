@@ -116,69 +116,6 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript" src="{{asset('Frontend')}}/js/jquery-1.10.1.min.js"></script>
-    <script type="text/javascript" src="{{asset('Frontend')}}/js/validform.min.js"></script>
-    <script type="text/javascript">
-
-        $("#topup_form").Validform({
-            tiptype: 4,
-            postonce: true,
-        });
-        var InterValObj; //timer变量，控制时间
-        var count = 120; //间隔函数，1秒执行
-        var curCount;//当前剩余秒数
-
-        function sendMessage() {
-            //验证手机号格式
-            var tel = $('#mobile').val();
-            var reg = /^(0|86|17951)?(13[0-9]|15[012356789]|17[0135678]|18[0-9]|14[579])[0-9]{8}$/;
-            if (tel == '') {
-                alert('手机号码不能为空');
-                return false;
-            }
-            if (reg.test(tel) == false) {
-                alert('手机号码格式不对');
-                return false;
-            }
-            $.ajax({
-                type: "post", //以post方式与后台沟通
-                url: "/send-sms", //与此php页面沟通
-                dataType: 'json',//从php返回的值以 JSON方式 解释
-                async: false,
-                data: {'mobile': tel},
-                success: function (data) {//如果调用php成功
-                    res = data;
-
-                }
-            })
-            if (res.code != 0) {
-                alert(res.msg);
-                return false;
-            }
-            curCount = count;
-            //设置button效果，开始计时
-            $("#btnSendCode").attr("disabled", "true");
-            $("#btnSendCode").val(curCount + "秒后重新发送");
-            InterValObj = window.setInterval(SetRemainTime, 1000); //启动计时器，1秒执行一次
-            //向后台发送处理数据
-
-        }
-
-        //timer处理函数
-        function SetRemainTime() {
-            if (curCount == 0) {
-                window.clearInterval(InterValObj);//停止计时器
-                $("#btnSendCode").removeAttr("disabled");//启用按钮
-                $("#btnSendCode").val("发送短信验证码");
-            }
-            else {
-                curCount--;
-                $("#btnSendCode").val(curCount + "秒后重新发送");
-            }
-        }
-    </script>
-
-
     <div class="footer">
         <div class="n-container c">
             <img src="{{asset('Frontend')}}/images/ft-logo.png" class="fl ft-logo" width="311" height="59" />
@@ -193,5 +130,14 @@
         </div>
     </div>
 </div>
+<script type="text/javascript" src="{{asset('Frontend')}}/js/jquery-1.10.1.min.js"></script>
+<script type="text/javascript" src="{{asset('Frontend')}}/js/validform.min.js"></script>
+<script type="text/javascript">
+
+    $("#topup_form").Validform({
+        tiptype: 3,
+        postonce: true,
+    });
+</script>
 </body>
 </html>

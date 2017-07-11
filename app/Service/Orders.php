@@ -10,6 +10,11 @@ class Orders extends Base
 {
     public function createOrder(array $data)
     {
+        $user = \App\Models\PassportUser::where('username',$data['account'])->first();
+        if(empty($user))
+        {
+            return $this->response(false,"该用户不存在");
+        }
         DB::beginTransaction();
         $orderSn = $this->generateOrderSn();
         try
@@ -17,6 +22,7 @@ class Orders extends Base
             $order = new Order();
             $order->order_sn = $orderSn;
             $order->ip_address = $this->getIp();
+            $order->user_id = $user->id;
             foreach ($data as $key=>$item)
             {
                 $order->$key = $item;
@@ -41,7 +47,6 @@ class Orders extends Base
     public function findOrderByStatus($status = Order::STATUS_INIT)
     {
         $orderList = Order::where("order_status",$status)->get();
-        dump($orderList);exit;
         return $orderList;
     }
 

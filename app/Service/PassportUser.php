@@ -44,9 +44,11 @@ class PassportUser extends Base
             {
                 $userId = $item->user_id;
                 $result = $this->addAmount($userId,$item->order_price);
-                if(!$result['status'])
+                if($result['status'])
                 {
-                    return;
+                    $item->order_status = \App\Models\Orders::STATUS_ARRIVE;
+                    $this->log->writeOrderLog(1,'用户充值到账提醒',$item->id);
+                    $item->save();
                 }
             }
             DB::commit();

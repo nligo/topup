@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Service\AlipayOrders;
 use App\Service\Orders;
+use App\Service\PassportUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Log;
@@ -14,7 +15,7 @@ class OrderController extends Controller
 {
     public function request()
     {
-        $order = new Orders();
+
         Session::put('form_token',time());
         return view('order.request');
     }
@@ -124,10 +125,10 @@ class OrderController extends Controller
     {
 
         // 验证请求。
-        if (! app('alipay.web')->verify()) {
-            Log::notice('Alipay return query data verification fail.');
-            return view('alipay.fail');
-        }
+//        if (! app('alipay.web')->verify()) {
+//            Log::notice('Alipay return query data verification fail.');
+//            return view('alipay.fail');
+//        }
 
         // 判断通知类型。
         switch (Input::get('trade_status')) {
@@ -144,6 +145,6 @@ class OrderController extends Controller
                 break;
         }
 
-        return view('order.success');
+//        return view('order.success');
     }
 }

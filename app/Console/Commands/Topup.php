@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Service\PassportUser;
 use Illuminate\Console\Command;
 
 class Topup extends Command
@@ -11,7 +12,7 @@ class Topup extends Command
      *
      * @var string
      */
-    protected $signature = 'test:topup';
+    protected $signature = 'passport_user:topup';
 
     /**
      * The console command description.
@@ -38,5 +39,8 @@ class Topup extends Command
     public function handle()
     {
 
+        $passportUser = new PassportUser();
+        $result = $passportUser->handleTopupAmount();
+        $this->info($result['msg']);
     }
 }
