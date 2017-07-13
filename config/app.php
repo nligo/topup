@@ -228,6 +228,6 @@ return [
 
     ],
 
-    'passport_url' => env('PASSPORT_URL', 'http://passport.ugogame.com.cn'),
+    'passport_url' => env('PASSPORT_URL', 'http://192.168.1.24:7777'),
 
 ];
