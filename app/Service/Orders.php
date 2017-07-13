@@ -44,10 +44,10 @@ class Orders extends Base
     }
 
 
-    public function findOrderByStatus($status = Order::STATUS_INIT)
+    public function findOrderById($id = 0)
     {
-        $orderList = Order::where("order_status",$status)->get();
-        return $orderList;
+        $info = Order::where('order_status',\App\Models\Orders::STATUS_PAID)->where('id',$id)->first();
+        return $info;
     }
 
 

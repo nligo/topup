@@ -8,8 +8,8 @@ return [
 	'sign_type' => 'MD5',
 
 	// 服务器异步通知页面路径。
-	'notify_url' => 'http://www.nlitt.com/order/notify',
+	'notify_url' => 'http://laravel.alipay.pro:5555/order/notify',
 
 	// 页面跳转同步通知页面路径。
-	'return_url' => 'http://www.nlitt.com/order/return'
+	'return_url' => 'http://laravel.alipay.pro:5555/order/return'
 ];

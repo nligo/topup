@@ -16,7 +16,6 @@ class AlipayOrders extends Base
         if (!empty($alipayInfo)) {
             return $this->response(false, '订单已经写入，请勿重复提交');
         }
-
         DB::beginTransaction();
         try {
             $alipayOrder = new AlipayOrder();
@@ -27,17 +26,27 @@ class AlipayOrders extends Base
             $order->order_status = \App\Models\Orders::STATUS_PAID;
             $order->pay_price = $data['total_fee'];
             $order->pay_at = $data['notify_time'];
-            $order->save();
             $alipayOrder->order_id = $order->id;
             $alipayOrder->save();
-            DB::commit();
             $logs = new Logs();
             $logs->writeOrderLog(Order::STATUS_PAID, '支付成功', $order->id);
+            if(empty($order->area_clothing_id))
+            {
+                $passportUser = new PassportUser();
+                $passportUser->addAmount($order->id);
+            }
+            else
+            {
+                $cashInfo = new CashInfo();
+                $cashInfo->writeCashInfo($order->account,$order->order_price,$order->area_clothing_id);
+                $order->order_status = \App\Models\Orders::STATUS_ARRIVE;
+            }
+            $order->save();
+            DB::commit();
             return $this->response(true, '操作成功', $alipayOrder);
         } catch (\Exception $e) {
-            Log::debug($e->getMessage());
             DB::rollBack();
-
+            Log::debug($e->getMessage());
             return $this->response(false, $e->getMessage());
         }
     }

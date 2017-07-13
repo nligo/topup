@@ -29,6 +29,7 @@
 	.ml140{margin-left: 120px;}
 	.ml50{margin-left: 25px;}
 .mtpis{width: 450px;margin: 15px auto 0px;border-radius: 4px;color: #4fc3ba; border: 1px solid #4fc3ba;background-color: #eafaf8;text-align: center;height: 30px;line-height: 30px;}
-.msuccess{background-position: -79px -82px;width: 56px;height: 56px;margin: 0 auto 20px;}	
+.msuccess{background-position: -79px -82px;width: 56px;height: 56px;margin: 0 auto 20px;}
+.merror{background-position: -79px -82px;width: 56px;height: 56px;margin: 0 auto 20px;}
 .btn-yz{width: 100px;height: 36px;background-color: #fff;color: #555;border: 1px solid #aaa;display: block;text-align: center;line-height: 34px;border-radius: 4px;}
 .btn-yz:hover{text-decoration: none;color: #4FC3BA;}

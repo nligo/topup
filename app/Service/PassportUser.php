@@ -11,9 +11,12 @@ class PassportUser extends Base
 {
     protected $log;
 
+    protected $orderService;
+
     public function __construct()
     {
         $this->log = new Logs();
+        $this->orderService = new Orders();
 
     }
 
@@ -27,55 +30,38 @@ class PassportUser extends Base
         return $this->response(true,'',$user);
     }
 
-    public function handleTopupAmount()
+
+    public function addAmount($orderId = 0)
     {
-        $orderService = new Orders();
-        $orderList = $orderService->findOrderByStatus(\App\Models\Orders::STATUS_PAID);
-        if(empty($orderList))
+
+        $orderInfo = $this->orderService->findOrderById($orderId);
+        if(empty($orderInfo))
         {
-            Log::debug("等待充值订单为空");
-            return $this->response(false,'等待充值订单为空');
+            Log::debug("订单不存在");
+            return $this->response(false,'订单不存在');
         }
-
-        DB::beginTransaction();
-        try
-        {
-            foreach ($orderList as $item)
-            {
-                $userId = $item->user_id;
-                $result = $this->addAmount($userId,$item->order_price);
-                if($result['status'])
-                {
-                    $item->order_status = \App\Models\Orders::STATUS_ARRIVE;
-                    $this->log->writeOrderLog(1,'用户充值到账提醒',$item->id);
-                    $item->save();
-                }
-            }
-            DB::commit();
-            Log::info("用户充值到账处理成功");
-            return $this->response(true,"用户充值到账处理成功");
-
-        }
-        catch (\Exception $e)
-        {
-            Log::error($e->getMessage());
-            DB::rollBack();
-            return $this->response(false,$e->getMessage());
-        }
-
-    }
-
-    public function addAmount($userId = 0,$amount = 0.00)
-    {
+        $userId = $orderInfo->user_id;
         $result = $this->checkUserIsExits($userId);
         if($result['status'])
         {
             $user = $result['data'];
-            $user->total_amount = $user->total_amount+$amount;
-            $this->log->writeTopupLog($amount,0,'充值到账提醒',$userId);
-            $user->save();
-            Log::info("用户充值金额到账提醒",['userId' => $userId]);
-            return $this->response(true,'充值到账提醒',$user);
+
+            try
+            {
+                $user->total_amount = $user->total_amount+$orderInfo->order_price;
+                $this->log->writeTopupLog($orderInfo->order_price,0,'充值到账提醒',$userId);
+                $user->save();
+                $orderInfo->order_status = \App\Models\Orders::STATUS_ARRIVE;
+                $this->log->writeOrderLog(1,'用户充值到账提醒',$orderInfo->id);
+                $orderInfo->save();
+                Log::info("用户充值到账处理成功",['userId' => $userId,'orderId' => $orderInfo->id]);
+                return $this->response(true,"用户充值到账处理成功");
+            }
+            catch (\Exception $e)
+            {
+                Log::error($e->getMessage());
+                return $this->response(false,$e->getMessage());
+            }
         }
         return $result;
     }

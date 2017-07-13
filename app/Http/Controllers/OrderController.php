@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AreaClothing;
 use App\Service\AlipayOrders;
+use App\Service\CashInfo;
 use App\Service\Orders;
-use App\Service\PassportUser;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
@@ -15,9 +17,9 @@ class OrderController extends Controller
 {
     public function request()
     {
-
         Session::put('form_token',time());
-        return view('order.request');
+        $areaList = AreaClothing::where("status",0)->get();
+        return view('order.request',['arealist' => $areaList]);
     }
 
     public function store(Request $request)
@@ -28,6 +30,7 @@ class OrderController extends Controller
             'topupAmount' => 'required',
             'topupNum' => 'required|alpha_num',
             'payType' => 'required',
+            'areaClothingId' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -43,6 +46,7 @@ class OrderController extends Controller
             $topupAmount = $request->request->get('topupAmount', '');
             $topupNum = $request->request->get('topupNum', '');
             $phone = $request->request->get('phone', '');
+            $areaClothingId = $request->request->getInt('areaClothingId', 0);
             $orderPrice = $topupAmount * $topupNum;
             $data = [
                 'account' => $account,
@@ -51,7 +55,8 @@ class OrderController extends Controller
                 'order_price' => $orderPrice,
                 'topup_amount' => $orderPrice,
                 'pay_type' => \App\Models\Orders::PAY_ALIPAY,
-                'phone' => $phone
+                'phone' => $phone,
+                'area_clothing_id' => $areaClothingId,
             ];
             $orders = new Orders();
             $result = $orders->createOrder($data);
@@ -77,42 +82,26 @@ class OrderController extends Controller
 
     public function notify(Request $request)
     {
-//        // 验证请求。
-//        if (! app('alipay.web')->verify()) {
-//            Log::notice('Alipay return query data verification fail.');
-//            return view('alipay.fail');
-//        }
-//
-//        // 判断通知类型。
-//        switch (Input::get('trade_status')) {
-//            case 'TRADE_SUCCESS':
-//                Log::debug('gaofei!!!!!!!!!!!!!!!!!!!!!!!!!');
-//                $result = (array)$request->request->getIterator();
-//                Log::debug(json_encode($result));
-//
-//
-//                $alipayOrder = new AlipayOrders();
-//                $response = $alipayOrder->createAlipayOrder($result);
-//                if($response['status'])
-//                {
-//                    return "success";
-//                }
-//            case 'TRADE_FINISHED':
-//                Log::debug('weeeeee!!!!!!!!!!!!!!!!!!!!!!!!!');
-//                // TODO: 支付成功，取得订单号进行其它相关操作。
-//                $result = (array)$request->request->getIterator();
-//                Log::debug(json_encode($result));
-//
-//
-//                $alipayOrder = new AlipayOrders();
-//                $response = $alipayOrder->createAlipayOrder($result);
-//                if($response['status'])
-//                {
-//                    return "success";
-//                }
-//                break;
-//
-//        }
+        // 验证请求。
+        if (! app('alipay.web')->verify()) {
+            Log::notice('Alipay return query data verification fail.');
+            return view('alipay.fail');
+        }
+
+        // 判断通知类型。
+        switch (Input::get('trade_status')) {
+            case 'TRADE_SUCCESS':
+            case 'TRADE_FINISHED':
+                $result = (array)$request->request->getIterator();
+                $alipayOrder = new AlipayOrders();
+                $response = $alipayOrder->createAlipayOrder($result);
+                if($response['status'])
+                {
+                    return 'success';
+                }
+                break;
+
+        }
 
         return "failed";
 
@@ -125,26 +114,26 @@ class OrderController extends Controller
     {
 
         // 验证请求。
-//        if (! app('alipay.web')->verify()) {
-//            Log::notice('Alipay return query data verification fail.');
-//            return view('alipay.fail');
-//        }
+        if (! app('alipay.web')->verify()) {
+            Log::notice('Alipay return query data verification fail.');
+            return view('order.fail');
+        }
 
         // 判断通知类型。
         switch (Input::get('trade_status')) {
             case 'TRADE_SUCCESS':
             case 'TRADE_FINISHED':
                 // TODO: 支付成功，取得订单号进行其它相关操作。
-                $result = (array)$request->query->getIterator();
-                $alipayOrder = new AlipayOrders();
-                $response = $alipayOrder->createAlipayOrder($result);
-                if($response['status'])
-                {
-                    return view('order.success');
-                }
-                break;
+            $result = (array)$request->query->getIterator();
+
+            $alipayOrder = new AlipayOrders();
+            $response = $alipayOrder->createAlipayOrder($result);
+            if($response['status'])
+            {
+                return view('order.success');
+            }
         }
 
-//        return view('order.success');
+        return view('order.success');
     }
 }

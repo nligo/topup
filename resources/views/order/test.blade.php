@@ -58,8 +58,6 @@
             </nav>
         </aside>
         <div class="pay-wrap pr" id="pay_wrap">
-
-
                     <h3 class="pay-title">当前的充值方式为&nbsp;<strong class="pay-mode">微信支付</strong>
                     </h3>
                     <table class="table-form">

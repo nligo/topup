@@ -8,14 +8,14 @@
     <link rel="icon" type="image/x-icon" href="/ico.png" />
 
     <title> 充值 | 游狗通行证</title>
-    <link rel="stylesheet" href="{{asset('Frontend')}}/Bootstrap/css/bootstrap.css" />
-    <link href="{{asset('Frontend')}}/css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="<?php echo e(asset('Frontend')); ?>/Bootstrap/css/bootstrap.css" />
+    <link href="<?php echo e(asset('Frontend')); ?>/css/base.css" rel="stylesheet">
 
-    <link href="{{asset('Frontend')}}/css/loing.css" rel="stylesheet">
+    <link href="<?php echo e(asset('Frontend')); ?>/css/loing.css" rel="stylesheet">
 
     <!--图标-->
-    <link rel="stylesheet" href="{{asset('Frontend')}}/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="{{asset('Frontend')}}/css/font-awesome-ie7.min.css" />
+    <link rel="stylesheet" href="<?php echo e(asset('Frontend')); ?>/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="<?php echo e(asset('Frontend')); ?>/css/font-awesome-ie7.min.css" />
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="http://apps.bdimg.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
@@ -29,11 +29,11 @@
 
         <div class="nav">
             <div class="n-container c">
-                <a href="javascript:void(0)" class="logo"><img src="{{asset('Frontend')}}/images/logo.png" width="151" height="41" /></a>
+                <a href="javascript:void(0)" class="logo"><img src="<?php echo e(asset('Frontend')); ?>/images/logo.png" width="151" height="41" /></a>
                 <div class="nav-right">
                     <a href="http://www.xytwz.com.cn" target="_blank">新倚天</a>
-                    <a href="{{ config('app.passport_url') }}">用户中心</a>
-                    <a href="{{route("order_request")}}" class="nav-on">充值中心</a>
+                    <a href="<?php echo e(config('app.passport_url')); ?>">用户中心</a>
+                    <a href="<?php echo e(route("order_request")); ?>" class="nav-on">充值中心</a>
                     <a href="javascript:void(0)" onclick="alertFun()">客服中心</a>
 
                 </div>
@@ -44,7 +44,7 @@
             <div class="pd">
                 <h2 class="re-title">在线充值</h2>
                 <div class="re-box">
-                    <form class="form-horizontal mt40" method="post" action="{{ route('order_store') }}"id="topup_form">
+                    <form class="form-horizontal mt40" method="post" action="<?php echo e(route('order_store')); ?>"id="topup_form">
                         <div class="form-group">
                             <label class="col-lg-4 col-sm-3 control-label"></label>
                             <div class="col-lg-8 col-sm-6">
@@ -58,7 +58,7 @@
                             <div class="col-lg-5 col-sm-6">
                                 <input type="text" id="account" name="account" class="form-control"
                                        required
-                                       datatype="/^[a-zA-z]\w{3,15}$/" errormsg="请输入合法账号" ajaxurl="{{ route("user_checkuser") }}" nullmsg="游戏账号"/>
+                                       datatype="/^[a-zA-z]\w{3,15}$/" errormsg="请输入合法账号" ajaxurl="<?php echo e(route("user_checkuser")); ?>" nullmsg="游戏账号"/>
                             </div>
                         </div>
                         <div class="form-group">
@@ -77,11 +77,11 @@
                                     <option value="">请选择区服</option>
                                     <option value="1">线路1</option>
                                     <option value="2">线路2</option>
-                                {{--@if(!empty($arealist))--}}
-                                    {{--@foreach($arealist as $item)--}}
-                                            {{--<option value="{{isset($item->id) ? $item->id : 0}}">{{isset($item->name) ? $item->name : ''}}</option>--}}
-                                    {{--@endforeach--}}
-                                {{--@endif--}}
+                                
+                                    
+                                            
+                                    
+                                
                                 </select>
                             </div>
                         </div>
@@ -100,8 +100,9 @@
                                 </select>
                             </div>
                         </div>
-                        <input name="form_token" value="{{ Session::get('form_token')}}" type="hidden"/>
-                        {!! csrf_field() !!}
+                        <input name="form_token" value="<?php echo e(Session::get('form_token')); ?>" type="hidden"/>
+                        <?php echo csrf_field(); ?>
+
 
                         <div class="form-group">
                             <label class="col-lg-4 col-sm-3 control-label"><span class="mred mr5">&nbsp;*</span>购买数量：
@@ -138,7 +139,7 @@
     </div>
     <div class="footer">
         <div class="n-container c">
-            <img src="{{asset('Frontend')}}/images/ft-logo.png" class="fl ft-logo" width="311" height="59" />
+            <img src="<?php echo e(asset('Frontend')); ?>/images/ft-logo.png" class="fl ft-logo" width="311" height="59" />
             <div class="ft-right fr">
                 <p>抵制不良游戏 拒绝盗版游戏 谨防上当受骗 适度游戏益脑 沉迷游戏伤身 合理安排时间 享受健康生活</p>
                 <p>西安游狗网络科技有限公司   |  <a href="/agreement" target="_blank">用户协议</a>  |  <a href="javascript:void(0)">商务联系</a>  |  <a href="javascript:void(0)">客户服务</a></p>
@@ -150,9 +151,9 @@
         </div>
     </div>
 </div>
-<script type="text/javascript" src="{{asset('Frontend')}}/js/jquery-1.10.1.min.js"></script>
-<script type="text/javascript" src="{{asset('Frontend')}}/js/validform.min.js"></script>
-<script type="text/javascript" src="{{asset('Frontend')}}/js/layer/layer.js" ></script>
+<script type="text/javascript" src="<?php echo e(asset('Frontend')); ?>/js/jquery-1.10.1.min.js"></script>
+<script type="text/javascript" src="<?php echo e(asset('Frontend')); ?>/js/validform.min.js"></script>
+<script type="text/javascript" src="<?php echo e(asset('Frontend')); ?>/js/layer/layer.js" ></script>
 
 <script type="text/javascript">
     function alertFun() {
