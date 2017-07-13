@@ -56,6 +56,11 @@
                         <div style="margin-top: 20px;word-wrap: break-word;">
                             <p class="text-center">&nbsp;&nbsp;&nbsp;新倚天金币是新倚天中专有的一种虚拟货币，大家可以用新倚天购买游戏商城内的任何道具。</p>
                         </div>
+                        <p class="text-center"><a>
+
+                                <input type="checkbox" name="checkbox" value="1" required checked nullmsg="请同意用户协议"><a
+                                        href="http://passport.ugogame.com.cn/agreement" target="_blank">《用户协议》</a>
+                            </a></p>
                     </div>
                     <div class="head-portrait">
                     </div>
