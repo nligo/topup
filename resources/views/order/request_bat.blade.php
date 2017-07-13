@@ -49,18 +49,22 @@
             <div class="col-md-1 column"></div>
             <div class="col-md-2 column">
                 <div></div>
-                <aside class="sidebar pa" style="width:100%;height:620px;border-left:1px solid #ff8e32;">
-                    <nav class="subnav">
-                        <ul>
-                            <li class="item active" data-value="WeChat" data-text="支付宝支付"><a href="javascript:;"><i
-                                            class="icon icon-weixin"></i>支付宝支付</a></li>
-                        </ul>
-                    </nav>
+                <aside class="sidebar pa" style="width:100%;height:620px;border-left:1px solid #4FC3BA;border-right: 1px solid #4FC3BA">
+
+                    <div class="head"  style="margin-top: 20%;margin-left: 5%">
+                        <img src="{{ asset("Frontend/images") }}/yitian_log.png"/>
+                        <div style="margin-top: 20px">
+                            <p class="text-center">新倚天金币是新倚天中专有的一种虚拟货币，</p>
+                            <p class="text-center">大家可以用新倚天购买游戏商城内的任何道具。</p>
+                        </div>
+                    </div>
+                    <div class="head-portrait">
+                    </div>
                 </aside>
             </div>
             <div class="col-md-8 column" style="background-color: #fff">
                 <div class="pay-wrap" style="margin-top: 5%;width: 100%">
-                    <h3 class="pay-title">当前的充值方式为&nbsp;<strong class="pay-mode">支付宝支付</strong>
+                    <h3 class="pay-title">当前的充值方式为&nbsp;<strong class="pay-mode" style="color: #4FC3BA">支付宝支付</strong>
                     </h3>
                     <form class="form-horizontal mt20" action="{{ route('order_store') }}" id="topup_form" method="post">
                         <div class="form-group">
@@ -154,7 +158,7 @@
                         </div>
                         <input type="hidden" name="payType" id="payType" value="alipay">
                         <div class="btn-wrap tac">
-                            <button type="submit" name="btn" class="btn btn-orange">立即充值</button>
+                            <button type="submit" name="btn" class="btn " style="background-color: #4FC3BA;color:white">立即充值</button>
                             <div class="error-msg tac" id="error_msg"></div>
                         </div>
                     </form>
