@@ -47,15 +47,14 @@
     <div class="container">
         <div class="row clearfix">
             <div class="col-md-1 column"></div>
-            <div class="col-md-2 column">
+            <div class="col-md-2 column" style="background-color: white">
                 <div></div>
-                <aside class="sidebar pa" style="width:100%;height:620px;border-left:1px solid #4FC3BA;border-right: 1px solid #4FC3BA">
+                <aside class="sidebar pa" style="background-color: white;width:100%;height:620px;border-right: 1px solid #f8f8f8">
 
                     <div class="head"  style="margin-top: 20%;margin-left: 5%">
                         <img src="{{ asset("Frontend/images") }}/yitian_log.png"/>
-                        <div style="margin-top: 20px">
-                            <p class="text-center">新倚天金币是新倚天中专有的一种虚拟货币，</p>
-                            <p class="text-center">大家可以用新倚天购买游戏商城内的任何道具。</p>
+                        <div style="margin-top: 20px;word-wrap: break-word;">
+                            <p class="text-center">&nbsp;&nbsp;&nbsp;新倚天金币是新倚天中专有的一种虚拟货币，大家可以用新倚天购买游戏商城内的任何道具。</p>
                         </div>
                     </div>
                     <div class="head-portrait">
@@ -69,7 +68,7 @@
                     <form class="form-horizontal mt20" action="{{ route('order_store') }}" id="topup_form" method="post">
                         <div class="form-group">
                             <label class="col-lg-2 col-sm-2 control-label">游戏账号： </label>
-                            <div class="col-lg-5 col-sm-6">
+                            <div class="col-lg-6 col-sm-6">
                                 <label class="checkbox-inline">
                                     <input type="text" id="account" name="account" class="input"
                                            required
@@ -81,7 +80,7 @@
                         {!! csrf_field() !!}
                         <div class="form-group">
                             <label class="col-lg-2 col-sm-2 control-label">确认账号： </label>
-                            <div class="col-lg-5 col-sm-6">
+                            <div class="col-lg-6 col-sm-6">
                                 <label class="checkbox-inline">
                                     <input type="text" class="input" id="rUsername" name="rUsername" datatype="*6-18"
                                            required recheck="account" errormsg="两次账号不一致！"/>
@@ -148,7 +147,7 @@
                         </div>
                         <div  class="form-group">
                             <label class="col-lg-2 col-sm-2 control-label">联系方式： </label>
-                            <div class="col-lg-9 col-sm-6">
+                            <div class="col-lg-6 col-sm-6">
                                 <label class="checkbox-inline">
                                     <input type="text" class="input" id="phone" name="phone" required
                                            errormsg="手机号码格式不对"
