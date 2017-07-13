@@ -51,7 +51,7 @@
                     <p class="sp msuccess"></p>
                     <p class="text-center mgreen mft16">订单操作成功</p>
                     <div class="text-center mt20">
-                        <a href="{{ route('order_request') }}" class="mbtn-l mbtn-cyan-bd">正在自动跳转到上一页，如没有跳转请点击此链接</a>
+                        <a href="{{ config('app.passport_url') }}" class="mbtn-l mbtn-cyan-bd">正在自动跳转到上一页，如没有跳转请点击此链接</a>
                     </div>
                 </div>
                 <!--设置成功公用代码 end-->

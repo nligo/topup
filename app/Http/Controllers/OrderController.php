@@ -19,7 +19,7 @@ class OrderController extends Controller
     {
         Session::put('form_token',time());
         $areaList = AreaClothing::where("status",0)->get();
-        return view('order.request',['arealist' => $areaList]);
+        return view('order.request_bat',['arealist' => $areaList]);
     }
 
     public function store(Request $request)
