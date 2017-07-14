@@ -112,7 +112,6 @@ class OrderController extends Controller
      */
     public function webReturn(Request $request)
     {
-
         // 验证请求。
         if (! app('alipay.web')->verify()) {
             Log::notice('Alipay return query data verification fail.');
@@ -133,7 +132,6 @@ class OrderController extends Controller
                 return view('order.success');
             }
         }
-
         return view('order.success');
     }
 }
