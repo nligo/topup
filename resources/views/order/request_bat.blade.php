@@ -72,7 +72,7 @@
                     </h3>
                     <form class="form-horizontal mt20" action="{{ route('order_store') }}" id="topup_form" method="post">
                         <div class="form-group">
-                            <label class="col-lg-2 col-sm-2 control-label">游戏账号： </label>
+                            <label class="col-lg-2 col-sm-2 control-label inline" style="padding-top: 12px">游戏账号： </label>
                             <div class="col-lg-6 col-sm-6">
                                 <label class="checkbox-inline">
                                     <input type="text" id="account" name="account" class="input"
@@ -84,7 +84,7 @@
                         <input name="form_token" value="{{ Session::get('form_token')}}" type="hidden"/>
                         {!! csrf_field() !!}
                         <div class="form-group">
-                            <label class="col-lg-2 col-sm-2 control-label">确认账号： </label>
+                            <label class="col-lg-2 col-sm-2 control-label"style="padding-top: 12px">确认账号： </label>
                             <div class="col-lg-6 col-sm-6">
                                 <label class="checkbox-inline">
                                     <input type="text" class="input" id="rUsername" name="rUsername" datatype="*6-18"
@@ -94,7 +94,7 @@
                         </div>
 
                         <div  class="form-group">
-                            <label class="col-lg-2 col-sm-2 control-label">游戏区服： </label>
+                            <label class="col-lg-2 col-sm-2 control-label" style="padding-top: 12px">游戏区服： </label>
                             <div class="col-lg-5 col-sm-6">
                                 <label class="checkbox-inline">
                                     <select class="input" name="areaClothingId">
@@ -106,7 +106,7 @@
                             </div>
                         </div>
                         <div  class="form-group">
-                            <label class="col-lg-2 col-sm-2 control-label">充值金额： </label>
+                            <label class="col-lg-2 col-sm-2 control-label"style="padding-top: 12px">充值金额： </label>
                             <div class="col-lg-9 col-sm-6">
                                 <label class="checkbox-inline">
                                     <ul class="amount-list cf" id="amount_list">
@@ -142,7 +142,7 @@
                             </div>
                         </div>
                         <div  class="form-group">
-                            <label class="col-lg-2 col-sm-2 control-label">充值数量： </label>
+                            <label class="col-lg-2 col-sm-2 control-label"style="padding-top: 12px">充值数量： </label>
                             <div class="col-lg-9 col-sm-6">
                                 <label class="checkbox-inline">
                                     <input type="number" class="input" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" style="width: 120px" value="10"
@@ -151,12 +151,21 @@
                             </div>
                         </div>
                         <div  class="form-group">
-                            <label class="col-lg-2 col-sm-2 control-label">联系方式： </label>
+                            <label class="col-lg-2 col-sm-2 control-label"style="padding-top: 12px">联系方式： </label>
                             <div class="col-lg-6 col-sm-6">
                                 <label class="checkbox-inline">
                                     <input type="text" class="input" id="phone" name="phone" required
                                            errormsg="手机号码格式不对"
                                            nullmsg="手机号码不能为空" datatype="m"/>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div  class="form-group">
+                            <label class="col-lg-2 col-sm-2 control-label"style="padding-top: 12px">支付方式： </label>
+                            <div class="col-lg-6 col-sm-6">
+                                <label class="checkbox-inline" style="margin-top: 4px">
+                                    <span><input type="radio" name="payType" value="alipay" checked required> 支付宝</span>
                                 </label>
                             </div>
                         </div>
