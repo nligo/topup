@@ -51,12 +51,12 @@
                 <div></div>
                 <aside class="sidebar pa" style="background-color: white;width:100%;height:620px;border-right: 1px solid #f8f8f8">
 
-                    <div class="head"  style="margin-top: 20%;margin-left: 5%">
+                    <div class="head"  style="margin-top: 50%;margin-left: 5%">
                         <img src="<?php echo e(asset("Frontend/images")); ?>/yitian_log.png"/>
-                        <div style="margin-top: 20px;word-wrap: break-word;">
-                            <p class="text-center">&nbsp;&nbsp;&nbsp;新倚天金币是新倚天中专有的一种虚拟货币，大家可以用新倚天购买游戏商城内的任何道具。</p>
+                        <div style="margin-top: 70px;word-wrap: break-word;margin-left: 3px;margin-right: 10px">
+                            <p class="text-center">&nbsp;&nbsp;新倚天金币是新倚天中专有的一种虚拟货币，大家可以用新倚天购买游戏商城内的任何道具。</p>
                         </div>
-                        <p class="text-center"><a>
+                        <p class="text-center" style="margin-top: 70px"><a>
 
                                 <input type="checkbox" name="checkbox" value="1" required checked nullmsg="请同意用户协议"><a
                                         href="http://passport.ugogame.com.cn/agreement" target="_blank">《用户协议》</a>
