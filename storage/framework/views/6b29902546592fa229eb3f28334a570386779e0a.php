@@ -20,6 +20,7 @@
     <!--图标-->
     <link rel="stylesheet" href="<?php echo e(asset('Frontend')); ?>/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="<?php echo e(asset('Frontend')); ?>/css/font-awesome-ie7.min.css"/>
+    <link rel="stylesheet" href="<?php echo e(asset("Frontend/lib/spinner/")); ?>/jquery.spinner.css"/>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="http://apps.bdimg.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
@@ -145,8 +146,7 @@
                             <label class="col-lg-2 col-sm-2 control-label"style="padding-top: 12px">充值数量： </label>
                             <div class="col-lg-9 col-sm-6">
                                 <label class="checkbox-inline">
-                                    <input type="number" class="input" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" style="width: 120px" value="10"
-                                           datatype="/^\+?[1-9]\d*$/" errormsg="请输入正确的数量" nullmsg="请输入数量" name="topupNum">
+                                    <input type="text" class="spinner"datatype="/^(([1-9]+[0-9]*.{1}[0-9]+)|([0].{1}[1-9]+[0-9]*)|([1-9][0-9]*)|([0][.][0-9]+[1-9]*))$/" errormsg="请输入正确的数量" nullmsg="请输入数量" name="topupNum" maxlength="4"/>
                                 </label>
                             </div>
                         </div>
@@ -175,11 +175,6 @@
                             <div class="error-msg tac" id="error_msg"></div>
                         </div>
                     </form>
-
-
-
-
-
                 </div>
             </div>
         </div>
@@ -209,6 +204,7 @@
 <script type="text/javascript" src="<?php echo e(asset('Frontend')); ?>/js/jquery-1.10.1.min.js"></script>
 <script type="text/javascript" src="<?php echo e(asset('Frontend')); ?>/js/validform.min.js"></script>
 <script type="text/javascript" src="<?php echo e(asset('Frontend')); ?>/js/layer/layer.js" ></script>
+<script type="text/javascript" src="<?php echo e(asset("Frontend/lib/spinner/")); ?>/jquery.spinner.js"></script>
 
 <script type="text/javascript">
     function alertFun() {
@@ -220,6 +216,11 @@
     $("#topup_form").Validform({
         tiptype: 3,
         postonce: true,
+    });
+    $('.spinner').spinner({
+        max:10000,
+        min:1,
+        step:2
     });
     $(document).ready(function(){
         $('input').iCheck({
