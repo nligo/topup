@@ -46,7 +46,7 @@ class AlipayOrders extends Base
             return $this->response(true, '操作成功', $alipayOrder);
         } catch (\Exception $e) {
             DB::rollBack();
-            Log::debug($e->getMessage());
+            Log::error($e->getMessage());
             return $this->response(false, $e->getMessage());
         }
     }
