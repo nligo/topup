@@ -53,7 +53,7 @@
 
                     <div class="head"  style="margin-top: 50%;margin-left: 5%">
                         <img src="{{ asset("Frontend/images") }}/yitian_log.png"/>
-                        <div style="margin-top: 70px;word-wrap: break-word;margin-left: 3px;margin-right: 10px">
+                        <div style="margin-top: 70px;word-wrap: break-word;margin-left: 12px;margin-right: 17px">
                             <p class="text-center">&nbsp;&nbsp;新倚天金币是新倚天中专有的一种虚拟货币，大家可以用新倚天购买游戏商城内的任何道具。</p>
                         </div>
                         <p class="text-center" style="margin-top: 70px"><a>
