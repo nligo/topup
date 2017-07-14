@@ -50,7 +50,7 @@
             <div class="col-md-1 column"></div>
             <div class="col-md-2 column" style="background-color: white">
                 <div></div>
-                <aside class="sidebar pa" style="background-color: white;width:100%;height:660px;border-right: 1px solid #f8f8f8">
+                <aside class="sidebar pa" style="background-color: white;width:100%;height:640px;border-right: 1px solid #f8f8f8">
 
                     <div class="head"  style="margin-top: 50%;margin-left: 5%">
                         <img src="{{ asset("Frontend/images") }}/yitian_log.png"/>

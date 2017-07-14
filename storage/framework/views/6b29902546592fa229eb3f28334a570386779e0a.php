@@ -220,7 +220,7 @@
     $('.spinner').spinner({
         max:10000,
         min:1,
-        step:2
+        step:1
     });
     $(document).ready(function(){
         $('input').iCheck({
