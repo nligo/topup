@@ -58,7 +58,7 @@
                             <p class="text-center">&nbsp;&nbsp;新倚天金币是新倚天中专有的一种虚拟货币，大家可以用新倚天购买游戏商城内的任何道具。</p>
                         </div>
                         <p class="text-center" style="margin-top: 70px"><a>
-                                <input type="checkbox" name="checkbox" value="1" required checked nullmsg="请同意用户协议"><a
+                                <input type="checkbox" name="checkbox" id="checkbox" value="1" required checked nullmsg="请同意用户协议"><a
                                         href="http://passport.ugogame.com.cn/agreement" target="_blank">《用户协议》</a>
                             </a></p>
                     </div>
@@ -170,7 +170,7 @@
                         </div>
                         <input type="hidden" name="payType" id="payType" value="alipay">
                         <div class="btn-wrap tac">
-                            <button type="submit" name="btn" class="btn " style="background-color: #4FC3BA;color:white">立即充值</button>
+                            <button type="submit" name="btn" class="btn" id="topup_btn" style="background-color: #4FC3BA;color:white">立即充值</button>
                             <div class="error-msg tac" id="error_msg"></div>
                         </div>
                     </form>
@@ -198,7 +198,7 @@
         </div>
     </div>
 </div>
-<script src="{{asset('Frontend')}}/lib/icheck.js"></script>
+<script src="{{asset('Frontend')}}/lib/icheck/icheck.js" type="text/javascript"></script>
 
 <script type="text/javascript" src="{{asset('Frontend')}}/js/jquery-1.10.1.min.js"></script>
 <script type="text/javascript" src="{{asset('Frontend')}}/js/validform.min.js"></script>
@@ -212,10 +212,23 @@
             btn: ['关闭'] //按钮
         })
     }
+
+    $("#checkbox").change(function(){
+        if($("#checkbox").is(":checked")) {
+            $("#topup_btn").attr('disabled',false);
+        }
+        else
+        {
+            alert("请同意用户协议");
+            $("#topup_btn").attr('disabled',true);
+        }
+    });
+
     $("#topup_form").Validform({
         tiptype: 3,
         postonce: true,
     });
+
     $('.spinner').spinner({
         max:10000,
         min:1,
